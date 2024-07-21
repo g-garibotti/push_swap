@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_tab.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggaribot <ggaribot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: genarogaribotti <genarogaribotti@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 19:50:26 by ggaribot          #+#    #+#             */
-/*   Updated: 2024/07/12 20:58:14 by ggaribot         ###   ########.fr       */
+/*   Updated: 2024/07/13 17:50:51 by genarogarib      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,28 +36,11 @@ char	**create_tab(int argc, char **argv)
 	return (tab);
 }
 
-int	check_tab(char **tab)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (tab[i] != '\0')
-	{
-		j = 0;
-		while (tab[i][j] != '\0')
-		{
-			if (tab[i][j])
-		}
-	}
-}
-
 char	**init_tab(int argc, char **argv)
 {
-	char	**tab;
+	char	**char_tab;
 
-	tab = create_tab(argc, argv);
-	if (check_tab(tab) == 1)
-		return (1);
-
+	char_tab = create_tab(argc, argv);
+	if (check_tab(char_tab) == 1)
+		return (NULL);
 }
