@@ -6,13 +6,13 @@
 /*   By: ggaribot <ggaribot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 20:09:00 by ggaribot          #+#    #+#             */
-/*   Updated: 2024/08/13 00:23:41 by ggaribot         ###   ########.fr       */
+/*   Updated: 2024/08/13 01:04:41 by ggaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-/*
+
 static void	sort_3(t_push_swap *ps)
 {
 	if (ps->a->stack[0] > ps->a->stack[1] && ps->a->stack[0] < ps->a->stack[2])
@@ -33,30 +33,33 @@ static void	sort_3(t_push_swap *ps)
 		rra(ps);
 }
 
-static void	sort_5(t_push_swap *ps)
+static void	sort_4_or_5(t_push_swap *ps)
 {
 	int		i;
-	int		j;
 	int		min;
 	int		pos;
 
 	i = 0;
-	while (i++ < 2)
+	while (i < 2)
 	{
-		min = ps->a->stack[0];
+		min = INT_MAX;
 		pos = 0;
-		j = 1;
-		while (j < ps->a->size)
+		i = 0;
+		while (i < ps->a->size)
 		{
-			if (ps->a->stack[j] < min)
+			if (ps->a->stack[i] < min)
 			{
-				min = ps->a->stack[j];
-				pos = j;
+				min = ps->a->stack[i];
+				pos = i;
 			}
-			j++;
+			i++;
 		}
-		while (pos--)
-			(pos < ps->a->size / 2) ? ra(ps) : rra(ps);
+		if (pos < ps->a->size / 2)
+			while (pos-- > 0)
+				ra(ps);
+		else
+			while (pos++ < ps->a->size)
+				rra(ps);
 		pb(ps);
 	}
 	sort_3(ps);
@@ -64,16 +67,15 @@ static void	sort_5(t_push_swap *ps)
 	pa(ps);
 }
 
-
 void	sort(t_push_swap *ps)
 {
 	if (ps->a->size == 2 && ps->a->stack[0] > ps->a->stack[1])
 		sa(ps);
 	else if (ps->a->size == 3)
 		sort_3(ps);
-	else if (ps->a->size == 5)
-		sort_5(ps);
-	else
-		sort_big(ps);
+	else if (ps->a->size <= 5)
+		sort_4_or_5(ps);
+	//else
+	//	sort_big(ps);
 }
-*/
+

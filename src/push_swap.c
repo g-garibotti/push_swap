@@ -6,7 +6,7 @@
 /*   By: ggaribot <ggaribot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:10:59 by ggaribot          #+#    #+#             */
-/*   Updated: 2024/08/13 00:33:02 by ggaribot         ###   ########.fr       */
+/*   Updated: 2024/08/13 01:00:26 by ggaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int	main(int argc, char **argv)
 	ps = NULL;
 	init_push_swap(&ps);
 	validate_arguments_fill_a(argc, argv, ps);
+	sort(ps);
 
 
 
