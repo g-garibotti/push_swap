@@ -6,13 +6,12 @@
 /*   By: ggaribot <ggaribot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 17:00:15 by ggaribot          #+#    #+#             */
-/*   Updated: 2024/08/12 15:45:02 by ggaribot         ###   ########.fr       */
+/*   Updated: 2024/08/12 19:06:00 by ggaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-
 
 # include "../libft/libft.h"
 # include "../libft/ft_printf.h"
@@ -36,23 +35,10 @@ typedef struct s_push_swap
 	t_stack		*b;
 }				t_push_swap;
 
+//PUSH_SWAP.c
 void	free_and_exit_with_message(t_push_swap *push_swap, char *msg);
 
-//VALIDATES ARGUMENTS
-void	validate_arguments(int argc, char **argv, t_push_swap *ps);
-long	ft_atol(const char *n);
+//VALIDATES.c
+void	validate_arguments_fill_a(int argc, char **argv, t_push_swap *ps);
 
-//CREATE INT TAB
-int	*init_tab(int argc, char **argv, t_push_swap *ps);
-
-/*typedef struct s_node
-{
-	int			nbr; // nombre a trier
-	int			index; // position dans la stack
-	bool		above_median;
-	bool		cheapest;
-	t_node		*next; //next node
-	t_node		*prev; // prev node
-}				t_node;
-*/
 #endif

@@ -6,13 +6,13 @@
 /*   By: ggaribot <ggaribot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:10:59 by ggaribot          #+#    #+#             */
-/*   Updated: 2024/08/12 18:47:51 by ggaribot         ###   ########.fr       */
+/*   Updated: 2024/08/12 19:09:08 by ggaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void free_and_exit_with_message(t_push_swap *push_swap, char *msg)
+void	free_and_exit_with_message(t_push_swap *push_swap, char *msg)
 {
 	if (push_swap)
 	{
@@ -53,13 +53,13 @@ static void	init_push_swap(t_push_swap **ps)
 	(*ps)->b->size_max = 0;
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    t_push_swap	*ps;
+	t_push_swap	*ps;
 
 	ps = NULL;
 	init_push_swap(&ps);
-	validate_arguments(argc, argv, ps);
+	validate_arguments_fill_a(argc, argv, ps);
 
 
 

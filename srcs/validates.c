@@ -6,7 +6,7 @@
 /*   By: ggaribot <ggaribot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 13:54:51 by ggaribot          #+#    #+#             */
-/*   Updated: 2024/08/12 18:54:12 by ggaribot         ###   ########.fr       */
+/*   Updated: 2024/08/12 19:07:52 by ggaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	check_digits(int argc, char **argv, t_push_swap *ps)
 
 static void	check_doubles(long num, t_push_swap *ps)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < ps->a->size)
@@ -48,8 +48,8 @@ static void	check_doubles(long num, t_push_swap *ps)
 
 static void	add_num_in_stack(int argc, char **argv, t_push_swap *ps)
 {
-	int i;
-	long num;
+	int		i;
+	long	num;
 
 	i = 0;
 	while (i < argc)
@@ -64,7 +64,7 @@ static void	add_num_in_stack(int argc, char **argv, t_push_swap *ps)
 	}
 }
 
-void	validate_arguments(int argc, char **argv, t_push_swap *ps)
+void	validate_arguments_fill_a(int argc, char **argv, t_push_swap *ps)
 {
 	if (argc < 2)
 		free_and_exit_with_message(ps, "Error: No arguments provided\n");
@@ -83,9 +83,9 @@ void	validate_arguments(int argc, char **argv, t_push_swap *ps)
 		argc--;
 	}
 	ps->a->size_max = argc;
-    ps->a->stack = malloc(sizeof(int) * ps->a->size_max);
+	ps->a->stack = malloc(sizeof(int) * ps->a->size_max);
 	if (!ps->a->stack)
-        free_and_exit_with_message(ps, "Error: Memory allocation failed\n");
+		free_and_exit_with_message(ps, "Error: Memory allocation failed\n");
 	ps->a->size = 0;
 	check_digits(argc, argv, ps);
 	add_num_in_stack(argc, argv, ps);
