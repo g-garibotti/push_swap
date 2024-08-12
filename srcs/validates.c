@@ -6,95 +6,103 @@
 /*   By: ggaribot <ggaribot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 13:54:51 by ggaribot          #+#    #+#             */
-/*   Updated: 2024/08/11 19:52:30 by ggaribot         ###   ########.fr       */
+/*   Updated: 2024/08/12 16:16:07 by ggaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-long	ft_atol(const char *str)
-{
-	int			i;
-	long		sign;
-	long long	res;
-
-	res = 0;
-	sign = 1;
-	i = 0;
-	while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
-		i++;
-	if ((str[i] == '+' || str[i] == '-'))
-	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
-	}
-	while (ft_isdigit(str[i]))
-	{
-		res = res * 10 + str[i] - '0';
-		i++;
-	}
-	return ((res * sign));
-}
-
-static void	validate_isdigit(int argc, char **argv)
+static void	check_digits(int argc, char **argv, t_push_swap *ps)
 {
 	int	i;
 	int	j;
 
-	i = 0;
-	if (argc < 2)
-		free_and_exit_with_message(NULL, "Error_isdigit\n");
-	while (++i < argc)
+	i = 1;
+	while (i < argc)
 	{
 		j = 0;
-		if (!argv[i][0] || (argv[i][0] && argv[i][0] == ' '))
-			free_and_exit_with_message(NULL, "Error_isdigit\n");
-		while (argv[i][j] != '\0')
+		if (argv[i][j] == '-')
+			j++;
+		while (argv[i][j])
 		{
-			if (!ft_isdigit(argv[i][j]) && argv[i][j] != ' '
-					&& argv[i][j] != '-' && argv[i][j] != '+')
-				free_and_exit_with_message(NULL, "Error_isdigit\n");
-			if ((argv[i][j] == '-' || argv[i][j] == '+')
-					&& ((j > 0 && argv[i][j - 1] != ' ')
-					|| !ft_isdigit(argv[i][j + 1])))
-				free_and_exit_with_message(NULL, "Error_isdigit\n");
-		j++;
+			if (!ft_isdigit(argv[i][j]))
+				free_and_exit_with_message(ps, "Error: Invalid argument\n");
+			j++;
 		}
+		i++;
 	}
 }
 
-static void	validate_check_duplicates(int argc, char **argv, t_push_swap *ps)
+long	ft_atol(const char *n)
 {
-	long	*values;
-	int		i;
-	int		j;
-	long	num;
+	long	result;
+	int		sign;
 
-	values = (long *)malloc(sizeof(long) * (argc - 1));
-	if (!values)
-		free_and_exit_with_message(ps, "Error_duplicates\n");
+	result = 0;
+	sign = 1;
+	while ((*n <= 13 && *n >= 9) || *n == ' ')
+		n++;
+	if (*n == '-' || *n == '+')
+	{
+		if (*n == '-')
+			sign = -1;
+		n++;
+	}
+	while (*n >= '0' && *n <= '9')
+	{
+		result = result * 10 + (*n - '0');
+		n++;
+	}
+	return (sign * result);
+}
+static void	check_doubles(long num, t_push_swap *ps)
+{
+	int i;
+
+	i = 0;
+	while (i < ps->a->size)
+	{
+		if (ps->a->stack[i] == num)
+			free_and_exit_with_message(ps, "Error: Duplicates found\n");
+		i++;
+	}
+}
+
+static void	add_num_in_stack(int argc, char **argv, t_push_swap *ps)
+{
+	int i;
+	long num;
+
 	i = 1;
 	while (i < argc)
 	{
 		num = ft_atol(argv[i]);
-		j = 0;
-		while (j < i - 1)
-		{
-			if (values[j] == num)
-			{
-				free(values);
-				free_and_exit_with_message(ps, "Error_duplicates\n");
-			}
-			j++;
-		}
-		values[i++ - 1] = num;
+		if (num > INT_MAX || num < INT_MIN)
+			free_and_exit_with_message(ps, "Error: Argument out of range\n");
+		check_doubles(num, ps);
+		ps->a->stack[i - 1] = (int)num;
+		ps->a->size++;
+		i++;
 	}
-	free(values);
 }
 
 void	validate_arguments(int argc, char **argv, t_push_swap *ps)
 {
-	validate_isdigit(argc, argv);
-	validate_check_duplicates(argc, argv, ps);
+	char	**splited_argv;
+
+	splited_argv = NULL;
+	if (argc < 2)
+		free_and_exit_with_message(ps, "Error: No arguments provided\n");
+	if (argc == 2)
+	{
+		splited_argv = ft_split(argv[1], ' ');
+		if (!splited_argv)
+			free_and_exit_with_message(ps, "Error: Invalid argument\n");
+		argv = splited_argv;
+		argc = 0;
+		while (argv[argc])
+			argc++;
+	}
+		check_digits(argc, argv, ps);
+		add_num_in_stack(argc, argv, ps);
 }

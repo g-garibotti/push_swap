@@ -81,3 +81,4 @@ int	*init_tab(int argc, char **argv, t_push_swap *ps)
 	}
 	return (int_tab);
 }
+
