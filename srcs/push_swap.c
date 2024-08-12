@@ -6,7 +6,7 @@
 /*   By: ggaribot <ggaribot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:10:59 by ggaribot          #+#    #+#             */
-/*   Updated: 2024/08/12 16:11:13 by ggaribot         ###   ########.fr       */
+/*   Updated: 2024/08/12 18:47:51 by ggaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,31 +36,44 @@ void free_and_exit_with_message(t_push_swap *push_swap, char *msg)
 	exit(1);
 }
 
-static void	init_push_swap(t_push_swap *ps)
+static void	init_push_swap(t_push_swap **ps)
 {
-	ps = malloc(sizeof(t_push_swap));
-	if (!ps)
+	*ps = malloc(sizeof(t_push_swap));
+	if (!*ps)
 		free_and_exit_with_message(NULL, "Error\n");
-	ps->a = malloc(sizeof(t_stack));
-	ps->b = malloc(sizeof(t_stack));
-	if (!ps->a || !ps->b)
-		free_and_exit_with_message(ps, "Error\n");
+	(*ps)->a = malloc(sizeof(t_stack));
+	(*ps)->b = malloc(sizeof(t_stack));
+	if (!(*ps)->a || !(*ps)->b)
+		free_and_exit_with_message(*ps, "Error\n");
+	(*ps)->a->stack = NULL;
+	(*ps)->b->stack = NULL;
+	(*ps)->a->size = 0;
+	(*ps)->b->size = 0;
+	(*ps)->a->size_max = 0;
+	(*ps)->b->size_max = 0;
 }
 
 int main(int argc, char **argv)
 {
     t_push_swap	*ps;
-    //int			*tab;
-	int i = 0;
 
 	ps = NULL;
-	//tab = NULL;
-	init_push_swap(ps);
+	init_push_swap(&ps);
 	validate_arguments(argc, argv, ps);
-	while(i < ps->a->size)
+
+
+
+
+
+
+
+	
+	int i = 0;
+	while(i < ps->a->size_max)
 	{
 		printf("tab[%d] = %d\n", i, ps->a->stack[i]);
 		i++;
 	}
+	free_and_exit_with_message(ps, "OK\n");
 	return (0);
 }

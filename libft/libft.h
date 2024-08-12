@@ -6,7 +6,7 @@
 /*   By: ggaribot <ggaribot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 15:14:38 by ggaribot          #+#    #+#             */
-/*   Updated: 2024/08/08 13:46:01 by ggaribot         ###   ########.fr       */
+/*   Updated: 2024/08/12 18:53:43 by ggaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,6 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 long	ft_strtol(const char *str, char **endptr, int base);
+long	ft_atol(const char *n);
+
 #endif

@@ -6,7 +6,7 @@
 #    By: ggaribot <ggaribot@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/23 17:02:47 by ggaribot          #+#    #+#              #
-#    Updated: 2024/08/11 18:55:59 by ggaribot         ###   ########.fr        #
+#    Updated: 2024/08/12 18:53:25 by ggaribot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ SRC		=	ft_strlen.c		ft_toupper.c	ft_tolower.c	ft_strrchr.c	ft_strnstr.c	ft_strnc
 			ft_isalnum.c	ft_bzero.c		ft_atoi.c		ft_calloc.c		ft_strdup.c		ft_substr.c \
 			ft_strjoin.c	ft_strtrim.c	ft_split.c		ft_itoa.c		ft_strmapi.c	ft_striteri.c \
 			ft_putchar_fd.c	ft_putstr_fd.c	ft_putendl_fd.c	ft_putnbr_fd.c	classic.c		base16.c \
-			ft_printf.c		ft_ptr.c		ft_strtol.c		get_next_line.c		get_next_line_utils.c
+			ft_printf.c		ft_ptr.c		ft_strtol.c		get_next_line.c		get_next_line_utils.c \
+			ft_atol.c
 
 BSRC	=	ft_lstnew_bonus.c	ft_lstadd_front_bonus.c	ft_lstsize_bonus.c	ft_lstlast_bonus.c \
 			ft_lstadd_back_bonus.c	ft_lstdelone_bonus.c	ft_lstclear_bonus.c	ft_lstiter_bonus.c \
