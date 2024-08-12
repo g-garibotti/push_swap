@@ -6,7 +6,7 @@
 /*   By: ggaribot <ggaribot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 17:00:15 by ggaribot          #+#    #+#             */
-/*   Updated: 2024/08/12 19:06:00 by ggaribot         ###   ########.fr       */
+/*   Updated: 2024/08/12 20:40:01 by ggaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,18 @@ void	free_and_exit_with_message(t_push_swap *push_swap, char *msg);
 
 //VALIDATES.c
 void	validate_arguments_fill_a(int argc, char **argv, t_push_swap *ps);
+
+//MOVEMENTS
+void	pa(t_push_swap *ps);
+void	pb(t_push_swap *ps);
+void	sa(t_push_swap *ps);
+void	sb(t_push_swap *ps);
+void	ss(t_push_swap *ps);
+void	ra(t_push_swap *ps);
+void	rb(t_push_swap *ps);
+void	rr(t_push_swap *ps);
+void	rra(t_push_swap *ps);
+void	rrb(t_push_swap *ps);
+void	rrr(t_push_swap *ps);
 
 #endif
