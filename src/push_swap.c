@@ -6,7 +6,7 @@
 /*   By: ggaribot <ggaribot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:10:59 by ggaribot          #+#    #+#             */
-/*   Updated: 2024/08/12 20:31:44 by ggaribot         ###   ########.fr       */
+/*   Updated: 2024/08/13 00:33:02 by ggaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ int	main(int argc, char **argv)
 	int i = 0;
 	while(i < ps->a->size_max)
 	{
-		printf("tab[%d] = %d\n", i, ps->a->stack[i]);
+		printf("stack_a[%d] = %d\n", i, ps->a->stack[i]);
 		i++;
 	}
-	free_and_exit_with_message(ps, "OK\n");
+	free_and_exit_with_message(ps, "OK");
 	return (0);
 }
