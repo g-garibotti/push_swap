@@ -6,7 +6,7 @@
 /*   By: ggaribot <ggaribot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 17:00:15 by ggaribot          #+#    #+#             */
-/*   Updated: 2024/08/13 01:01:16 by ggaribot         ###   ########.fr       */
+/*   Updated: 2024/08/13 16:51:47 by ggaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ void	rrr(t_push_swap *ps);
 
 //SORT
 void	sort(t_push_swap *ps);
+void	sort_big(t_push_swap *ps);
 
 #endif
