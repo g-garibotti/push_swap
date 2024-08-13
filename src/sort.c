@@ -6,7 +6,7 @@
 /*   By: ggaribot <ggaribot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 20:09:00 by ggaribot          #+#    #+#             */
-/*   Updated: 2024/08/13 16:51:14 by ggaribot         ###   ########.fr       */
+/*   Updated: 2024/08/13 16:59:38 by ggaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,12 +98,15 @@ static void	sort_4_or_5(t_push_swap *ps)
 
 void	sort(t_push_swap *ps)
 {
-	if (ps->a->size == 2 && ps->a->stack[0] > ps->a->stack[1])
-		sa(ps);
+	if (ps->a->size == 2)
+	{
+		if (ps->a->stack[0] > ps->a->stack[1])
+			sa(ps);
+	}
 	else if (ps->a->size == 3)
 		sort_3(ps);
 	else if (ps->a->size <= 5)
 		sort_4_or_5(ps);
-	else
-		sort_big(ps);
+	//else
+	//	sort_big(ps);
 }
