@@ -6,13 +6,13 @@
 /*   By: ggaribot <ggaribot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:10:59 by ggaribot          #+#    #+#             */
-/*   Updated: 2024/08/13 16:42:59 by ggaribot         ###   ########.fr       */
+/*   Updated: 2024/08/13 19:06:35 by ggaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	free_and_exit_with_message(t_push_swap *push_swap, char *msg)
+void	free_push_swap(t_push_swap *push_swap)
 {
 	if (push_swap)
 	{
@@ -30,6 +30,11 @@ void	free_and_exit_with_message(t_push_swap *push_swap, char *msg)
 		}
 		free(push_swap);
 	}
+}
+
+void	free_and_exit_with_message(t_push_swap *push_swap, char *msg)
+{
+	free_push_swap(push_swap);
 	if (msg)
 		ft_putstr_fd(msg, 2);
 	ft_putstr_fd("\n", 2);
@@ -56,7 +61,6 @@ static void	init_push_swap(t_push_swap **ps)
 	(*ps)->b->size_max = 10;
 }
 
-
 int	main(int argc, char **argv)
 {
 	t_push_swap	*ps;
@@ -81,6 +85,7 @@ int	main(int argc, char **argv)
 		printf("stack_a[%d] = %d\n", i, ps->a->stack[i]);
 		i++;
 	}
-	free_and_exit_with_message(ps, "OK");
+	free_push_swap(ps);
+	printf("OK\n");
 	return (0);
 }
