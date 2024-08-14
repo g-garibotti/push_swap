@@ -6,7 +6,7 @@
 /*   By: ggaribot <ggaribot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 17:00:15 by ggaribot          #+#    #+#             */
-/*   Updated: 2024/08/13 19:04:55 by ggaribot         ###   ########.fr       */
+/*   Updated: 2024/08/14 18:05:24 by ggaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ typedef struct s_push_swap
 
 //PUSH_SWAP.c
 void	free_and_exit_with_message(t_push_swap *push_swap, char *msg);
-void free_push_swap(t_push_swap *push_swap);
 
 //VALIDATES.c
 void	validate_arguments_fill_a(int argc, char **argv, t_push_swap *ps);
@@ -57,7 +56,7 @@ void	rrr(t_push_swap *ps);
 
 //SORT
 void	sort(t_push_swap *ps);
-void	sort_big(t_push_swap *ps);
+void	radix_sort(t_push_swap *ps);
 
 //CHECK
 void	check_digits(int argc, char **argv, t_push_swap *ps);

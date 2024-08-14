@@ -6,7 +6,7 @@
 /*   By: ggaribot <ggaribot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 13:54:51 by ggaribot          #+#    #+#             */
-/*   Updated: 2024/08/13 18:55:12 by ggaribot         ###   ########.fr       */
+/*   Updated: 2024/08/14 17:43:31 by ggaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static char	**handle_single_argument(char *arg, t_push_swap *ps)
 	return (split_argv);
 }
 
-static void	alloc_a_memory(t_push_swap *ps, size_t size_max, char **split_argv)
+static void	alloc_a_b_mem(t_push_swap *ps, size_t size_max, char **split_argv)
 {
 	ps->a->size_max = size_max;
 	ps->a->stack = malloc(sizeof(int) * ps->a->size_max);
@@ -35,6 +35,15 @@ static void	alloc_a_memory(t_push_swap *ps, size_t size_max, char **split_argv)
 		free_and_exit_with_message(ps, "Error: Memory allocation failed\n");
 	}
 	ps->a->size = 0;
+	ps->b->size_max = size_max;
+	ps->b->stack = malloc(sizeof(int) * ps->b->size_max);
+	if (!ps->b->stack)
+	{
+		if (split_argv)
+			ft_free_split(split_argv);
+		free_and_exit_with_message(ps, "Error: Memory allocation failed\n");
+	}
+	ps->b->size = 0;
 }
 
 static void	add_num_in_stack(int argc, char **argv, t_push_swap *ps)
@@ -75,7 +84,7 @@ void	validate_arguments_fill_a(int argc, char **argv, t_push_swap *ps)
 		argv++;
 		argc--;
 	}
-	alloc_a_memory(ps, argc, split_argv);
+	alloc_a_b_mem(ps, argc, split_argv);
 	check_digits(argc, argv, ps);
 	add_num_in_stack(argc, argv, ps);
 	if (split_argv)

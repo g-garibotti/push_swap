@@ -6,59 +6,50 @@
 /*   By: ggaribot <ggaribot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:10:59 by ggaribot          #+#    #+#             */
-/*   Updated: 2024/08/13 19:06:35 by ggaribot         ###   ########.fr       */
+/*   Updated: 2024/08/14 17:42:47 by ggaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	free_push_swap(t_push_swap *push_swap)
+void	free_and_exit_with_message(t_push_swap *ps, char *msg)
 {
-	if (push_swap)
+	if (ps)
 	{
-		if (push_swap->a)
+		if (ps->a)
 		{
-			if (push_swap->a->stack)
-				free(push_swap->a->stack);
-			free(push_swap->a);
+			free(ps->a->stack);
+			free(ps->a);
 		}
-		if (push_swap->b)
+		if (ps->b)
 		{
-			if (push_swap->b->stack)
-				free(push_swap->b->stack);
-			free(push_swap->b);
+			free(ps->b->stack);
+			free(ps->b);
 		}
-		free(push_swap);
+		free(ps);
 	}
-}
-
-void	free_and_exit_with_message(t_push_swap *push_swap, char *msg)
-{
-	free_push_swap(push_swap);
 	if (msg)
-		ft_putstr_fd(msg, 2);
-	ft_putstr_fd("\n", 2);
-	exit(1);
+		ft_putstr_fd(msg, 1);
+	exit(0);
 }
 
 static void	init_push_swap(t_push_swap **ps)
 {
 	*ps = malloc(sizeof(t_push_swap));
 	if (!*ps)
-		free_and_exit_with_message(NULL, "Error: Failed allocate push_swap\n");
+		free_and_exit_with_message(NULL, "Error: Failed to allocate ps\n");
+
 	(*ps)->a = malloc(sizeof(t_stack));
 	(*ps)->b = malloc(sizeof(t_stack));
 	if (!(*ps)->a || !(*ps)->b)
 		free_and_exit_with_message(*ps, "Error: Failed to allocate stacks\n");
-	(*ps)->a->stack = malloc(sizeof(int) * 10);
-	(*ps)->b->stack = malloc(sizeof(int) * 10);
-	if (!(*ps)->a->stack || !(*ps)->b->stack)
-		free_and_exit_with_message(*ps, "Error: Failed to allocate stack\n");
 
+	(*ps)->a->stack = NULL;
+	(*ps)->b->stack = NULL;
 	(*ps)->a->size = 0;
 	(*ps)->b->size = 0;
-	(*ps)->a->size_max = 10;
-	(*ps)->b->size_max = 10;
+	(*ps)->a->size_max = 0;
+	(*ps)->b->size_max = 0;
 }
 
 int	main(int argc, char **argv)
@@ -85,7 +76,6 @@ int	main(int argc, char **argv)
 		printf("stack_a[%d] = %d\n", i, ps->a->stack[i]);
 		i++;
 	}
-	free_push_swap(ps);
-	printf("OK\n");
+	free_and_exit_with_message(ps, "OK\n");
 	return (0);
 }

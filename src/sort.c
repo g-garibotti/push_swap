@@ -6,7 +6,7 @@
 /*   By: ggaribot <ggaribot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 20:09:00 by ggaribot          #+#    #+#             */
-/*   Updated: 2024/08/13 18:23:48 by ggaribot         ###   ########.fr       */
+/*   Updated: 2024/08/14 18:05:03 by ggaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ static int	find_min_position(t_stack *stack)
 	return (pos);
 }
 
-
 static void	push_min_to_b(t_push_swap *ps)
 {
 	int	pos;
@@ -107,6 +106,6 @@ void	sort(t_push_swap *ps)
 		sort_3(ps);
 	else if (ps->a->size <= 5)
 		sort_4_or_5(ps);
-	//else
-	//	sort_big(ps);
+	else
+		radix_sort(ps);
 }

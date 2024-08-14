@@ -6,7 +6,7 @@
 #    By: ggaribot <ggaribot@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/30 16:32:04 by ggaribot          #+#    #+#              #
-#    Updated: 2024/08/13 18:54:38 by ggaribot         ###   ########.fr        #
+#    Updated: 2024/08/14 18:05:39 by ggaribot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ INCLUDE_DIR = includes
 LIBFT_DIR = libft
 
 # Source files and object files
-SRCS = $(SRC_DIR)/push_swap.c $(SRC_DIR)/sort.c $(SRC_DIR)/validates.c $(SRC_DIR)/sort_big.c\
+SRCS = $(SRC_DIR)/push_swap.c $(SRC_DIR)/sort.c $(SRC_DIR)/validates.c $(SRC_DIR)/radix_sort.c\
 		$(SRC_DIR)/check.c\
 		$(MOVE_DIR)/swap.c $(MOVE_DIR)/push.c $(MOVE_DIR)/rotate.c $(MOVE_DIR)/reverse_rotate.c
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
