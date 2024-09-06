@@ -6,12 +6,11 @@
 /*   By: ggaribot <ggaribot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 20:09:00 by ggaribot          #+#    #+#             */
-/*   Updated: 2024/08/14 18:05:03 by ggaribot         ###   ########.fr       */
+/*   Updated: 2024/09/06 16:13:34 by ggaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
 
 static void	sort_3(t_push_swap *ps)
 {
@@ -93,7 +92,6 @@ static void	sort_4_or_5(t_push_swap *ps)
 	while (ps->b->size > 0)
 		pa(ps);
 }
-
 
 void	sort(t_push_swap *ps)
 {

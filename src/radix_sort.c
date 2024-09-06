@@ -6,7 +6,7 @@
 /*   By: ggaribot <ggaribot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 16:52:05 by ggaribot          #+#    #+#             */
-/*   Updated: 2024/08/14 18:10:56 by ggaribot         ###   ########.fr       */
+/*   Updated: 2024/09/06 16:13:04 by ggaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,21 @@ void	radix_sort(t_push_swap *ps)
 	int	num;
 	int	max_bits;
 
-	max_bits = get_max_bits(ps->a); // Get the maximum number of bits needed
+	max_bits = get_max_bits(ps->a);
 	i = 0;
-	while (i < max_bits)            // Iterate over each bit
+	while (i < max_bits)
 	{
 		j = 0;
-		while (j < ps->a->size_max) // Process all elements in stack A
+		while (j < ps->a->size_max)
 		{
 			num = ps->a->stack[0];
-			if ((num >> i) & 1)     // Check the ith bit
-				ra(ps);             // Rotate A if the bit is 1
+			if ((num >> i) & 1)
+				ra(ps);
 			else
-				pb(ps);             // Push to B if the bit is 0
+				pb(ps);
 			j++;
 		}
-		while (ps->b->size > 0)     // Push everything back to A from B
+		while (ps->b->size > 0)
 			pa(ps);
 		i++;
 	}

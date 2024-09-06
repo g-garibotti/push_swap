@@ -6,11 +6,25 @@
 /*   By: ggaribot <ggaribot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:10:59 by ggaribot          #+#    #+#             */
-/*   Updated: 2024/08/14 17:42:47 by ggaribot         ###   ########.fr       */
+/*   Updated: 2024/09/06 16:12:28 by ggaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+static int	is_sorted(t_stack *stack)
+{
+	int	i;
+
+	i = 0;
+	while (i < stack->size - 1)
+	{
+		if (stack->stack[i] > stack->stack[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 void	free_and_exit_with_message(t_push_swap *ps, char *msg)
 {
@@ -29,7 +43,7 @@ void	free_and_exit_with_message(t_push_swap *ps, char *msg)
 		free(ps);
 	}
 	if (msg)
-		ft_putstr_fd(msg, 1);
+		ft_putstr_fd(msg, 2);
 	exit(0);
 }
 
@@ -37,13 +51,11 @@ static void	init_push_swap(t_push_swap **ps)
 {
 	*ps = malloc(sizeof(t_push_swap));
 	if (!*ps)
-		free_and_exit_with_message(NULL, "Error: Failed to allocate ps\n");
-
+		free_and_exit_with_message(NULL, "Error\n");
 	(*ps)->a = malloc(sizeof(t_stack));
 	(*ps)->b = malloc(sizeof(t_stack));
 	if (!(*ps)->a || !(*ps)->b)
-		free_and_exit_with_message(*ps, "Error: Failed to allocate stacks\n");
-
+		free_and_exit_with_message(*ps, "Error\n");
 	(*ps)->a->stack = NULL;
 	(*ps)->b->stack = NULL;
 	(*ps)->a->size = 0;
@@ -60,22 +72,8 @@ int	main(int argc, char **argv)
 	init_push_swap(&ps);
 	validate_arguments_fill_a(argc, argv, ps);
 	ps->b->size_max = ps->a->size_max;
-
-	
-	int i = 0;
-	while (i < ps->a->size)
-	{
-		printf("stack_a[%d] = %d\n", i, ps->a->stack[i]);
-		i++;
-	}
-	sort(ps);
-	printf("After sort:\n");
-	i = 0;
-	while (i < ps->a->size)
-	{
-		printf("stack_a[%d] = %d\n", i, ps->a->stack[i]);
-		i++;
-	}
-	free_and_exit_with_message(ps, "OK\n");
+	if (!is_sorted(ps->a))
+		sort(ps);
+	free_and_exit_with_message(ps, NULL);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ggaribot <ggaribot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 13:54:51 by ggaribot          #+#    #+#             */
-/*   Updated: 2024/08/14 17:43:31 by ggaribot         ###   ########.fr       */
+/*   Updated: 2024/09/06 16:00:57 by ggaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ static char	**handle_single_argument(char *arg, t_push_swap *ps)
 	char	**split_argv;
 
 	if (!*arg || is_empty_or_space(arg))
-		free_and_exit_with_message(ps, "Error: Empty argument\n");
+		free_and_exit_with_message(ps, "Error\n");
 	split_argv = ft_split(arg, ' ');
 	if (!split_argv)
-		free_and_exit_with_message(ps, "Error: Invalid argument\n");
+		free_and_exit_with_message(ps, "Error\n");
 	return (split_argv);
 }
 
@@ -32,7 +32,7 @@ static void	alloc_a_b_mem(t_push_swap *ps, size_t size_max, char **split_argv)
 	{
 		if (split_argv)
 			ft_free_split(split_argv);
-		free_and_exit_with_message(ps, "Error: Memory allocation failed\n");
+		free_and_exit_with_message(ps, "Error\n");
 	}
 	ps->a->size = 0;
 	ps->b->size_max = size_max;
@@ -41,7 +41,7 @@ static void	alloc_a_b_mem(t_push_swap *ps, size_t size_max, char **split_argv)
 	{
 		if (split_argv)
 			ft_free_split(split_argv);
-		free_and_exit_with_message(ps, "Error: Memory allocation failed\n");
+		free_and_exit_with_message(ps, "Error\n");
 	}
 	ps->b->size = 0;
 }
@@ -56,7 +56,7 @@ static void	add_num_in_stack(int argc, char **argv, t_push_swap *ps)
 	{
 		num = ft_atol(argv[i]);
 		if (num > INT_MAX || num < INT_MIN)
-			free_and_exit_with_message(ps, "Error: Argument out of range\n");
+			free_and_exit_with_message(ps, "Error\n");
 		check_doubles(num, ps);
 		ps->a->stack[i] = (int)num;
 		ps->a->size++;
@@ -70,7 +70,7 @@ void	validate_arguments_fill_a(int argc, char **argv, t_push_swap *ps)
 
 	split_argv = NULL;
 	if (argc < 2)
-		free_and_exit_with_message(ps, "Error: No arguments provided\n");
+		free_and_exit_with_message(ps, "Error\n");
 	if (argc == 2)
 	{
 		split_argv = handle_single_argument(argv[1], ps);
