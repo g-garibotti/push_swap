@@ -6,7 +6,7 @@
 /*   By: ggaribot <ggaribot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:10:59 by ggaribot          #+#    #+#             */
-/*   Updated: 2024/09/06 16:12:28 by ggaribot         ###   ########.fr       */
+/*   Updated: 2024/09/11 15:54:44 by ggaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ static int	is_sorted(t_stack *stack)
 	return (1);
 }
 
-void	free_and_exit_with_message(t_push_swap *ps, char *msg)
+void	free_and_exit_with_message(t_push_swap *ps, char **split_argv,
+		char *msg)
 {
 	if (ps)
 	{
@@ -42,6 +43,8 @@ void	free_and_exit_with_message(t_push_swap *ps, char *msg)
 		}
 		free(ps);
 	}
+	if (split_argv)
+		ft_free_split(split_argv);
 	if (msg)
 		ft_putstr_fd(msg, 2);
 	exit(0);
@@ -51,11 +54,11 @@ static void	init_push_swap(t_push_swap **ps)
 {
 	*ps = malloc(sizeof(t_push_swap));
 	if (!*ps)
-		free_and_exit_with_message(NULL, "Error\n");
+		free_and_exit_with_message(NULL, NULL, "Error\n");
 	(*ps)->a = malloc(sizeof(t_stack));
 	(*ps)->b = malloc(sizeof(t_stack));
 	if (!(*ps)->a || !(*ps)->b)
-		free_and_exit_with_message(*ps, "Error\n");
+		free_and_exit_with_message(*ps, NULL, "Error\n");
 	(*ps)->a->stack = NULL;
 	(*ps)->b->stack = NULL;
 	(*ps)->a->size = 0;
@@ -74,6 +77,6 @@ int	main(int argc, char **argv)
 	ps->b->size_max = ps->a->size_max;
 	if (!is_sorted(ps->a))
 		sort(ps);
-	free_and_exit_with_message(ps, NULL);
+	free_and_exit_with_message(ps, NULL, NULL);
 	return (0);
 }

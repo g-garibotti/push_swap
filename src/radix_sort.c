@@ -6,13 +6,13 @@
 /*   By: ggaribot <ggaribot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 16:52:05 by ggaribot          #+#    #+#             */
-/*   Updated: 2024/09/06 16:13:04 by ggaribot         ###   ########.fr       */
+/*   Updated: 2024/09/11 15:41:08 by ggaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static	int	get_max_bits(t_stack *stack)
+static int	get_max_bits(t_stack *stack)
 {
 	int	max;
 	int	bits;

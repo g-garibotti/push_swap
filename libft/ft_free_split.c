@@ -6,7 +6,7 @@
 /*   By: ggaribot <ggaribot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 18:50:15 by ggaribot          #+#    #+#             */
-/*   Updated: 2024/08/13 18:50:37 by ggaribot         ###   ########.fr       */
+/*   Updated: 2024/09/11 15:25:33 by ggaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_free_split(char **str)
 	int	i;
 
 	i = 0;
-	while (str[i] != NULL)
+	while (str[i])
 	{
 		free(str[i]);
 		i++;
