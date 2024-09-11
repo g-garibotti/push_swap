@@ -6,7 +6,7 @@
 /*   By: ggaribot <ggaribot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 17:00:15 by ggaribot          #+#    #+#             */
-/*   Updated: 2024/09/11 15:40:43 by ggaribot         ###   ########.fr       */
+/*   Updated: 2024/09/11 16:30:20 by ggaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void		radix_sort(t_push_swap *ps);
 // CHECK
 void		check_digits(int argc, char **argv, t_push_swap *ps,
 				char **split_argv);
-void		check_doubles(long num, t_push_swap *ps);
+void		check_doubles(long num, t_push_swap *ps, char **split_argv);
 int			is_empty_or_space(const char *str);
 
 #endif

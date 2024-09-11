@@ -6,7 +6,7 @@
 /*   By: ggaribot <ggaribot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 18:43:43 by ggaribot          #+#    #+#             */
-/*   Updated: 2024/09/11 15:41:11 by ggaribot         ###   ########.fr       */
+/*   Updated: 2024/09/11 16:30:08 by ggaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	check_digits(int argc, char **argv, t_push_swap *ps, char **split_argv)
 	}
 }
 
-void	check_doubles(long num, t_push_swap *ps)
+void	check_doubles(long num, t_push_swap *ps, char **split_argv)
 {
 	int	i;
 
@@ -46,7 +46,7 @@ void	check_doubles(long num, t_push_swap *ps)
 	while (i < ps->a->size)
 	{
 		if (ps->a->stack[i] == num)
-			free_and_exit_with_message(ps, NULL, "Error\n");
+			free_and_exit_with_message(ps, split_argv, "Error\n");
 		i++;
 	}
 }

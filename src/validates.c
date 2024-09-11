@@ -6,7 +6,7 @@
 /*   By: ggaribot <ggaribot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 13:54:51 by ggaribot          #+#    #+#             */
-/*   Updated: 2024/09/11 15:56:46 by ggaribot         ###   ########.fr       */
+/*   Updated: 2024/09/11 16:30:44 by ggaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	add_num_in_stack(int argc, char **argv, t_push_swap *ps,
 		num = ft_atol(argv[i]);
 		if (num > INT_MAX || num < INT_MIN)
 			free_and_exit_with_message(ps, split_argv, "Error\n");
-		check_doubles(num, ps);
+		check_doubles(num, ps, split_argv);
 		ps->a->stack[i] = (int)num;
 		ps->a->size++;
 		i++;
